@@ -12,7 +12,23 @@
         <nav>
             <div class="logo">
                 <a href="../index.html">
-                    <img src="../assets/images/logo_new.svg" alt="SOS Serviços" class="logo-img" width="200" height="50">
+                    <div class="logo-container">
+                        <div class="logo-text">
+                            <span class="sos">SOS</span>
+                            <span class="servicos">serviços</span>
+                        </div>
+                        <div class="workers-container">
+                            <i class="fas fa-hard-hat worker-icon"></i>
+                            <i class="fas fa-wrench worker-icon"></i>
+                            <i class="fas fa-plug worker-icon"></i>
+                            <i class="fas fa-tools worker-icon"></i>
+                        </div>
+                        <!-- Elementos decorativos -->
+                        <div class="circle-decoration circle-1"></div>
+                        <div class="circle-decoration circle-2"></div>
+                        <div class="dashed-line line-1"></div>
+                        <div class="dashed-line line-2"></div>
+                    </div>
                 </a>
             </div>
             <div class="nav-links">
@@ -46,17 +62,17 @@
             <form id="cadastroForm" class="cadastro-form">
                 <div class="form-group">
                     <label for="nome">Nome Completo</label>
-                    <input type="text" id="nome" name="nome" required>
+                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="email" placeholder="Digite seu melhor email" required>
                 </div>
 
                 <div class="form-group">
                     <label for="senha">Senha</label>
-                    <input type="password" id="senha" name="senha" required>
+                    <input type="password" id="senha" name="senha" placeholder="Digite uma senha segura" required>
                 </div>
 
                 <div class="form-group">
@@ -74,12 +90,10 @@
                         <option value="Pintor">Pintor</option>
                         <option value="Jardineiro">Jardineiro</option>
                         <option value="Diarista">Diarista</option>
+                        <option value="Marceneiro">Marceneiro</option>
+                        <option value="Técnico de TI">Técnico de TI</option>
+                        <option value="Ar Condicionado">Técnico de Ar Condicionado</option>
                     </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="descricao">Descrição dos Serviços</label>
-                    <textarea id="descricao" name="descricao" rows="4" placeholder="Descreva sua experiência e os serviços que você oferece..."></textarea>
                 </div>
 
                 <div class="form-group">
@@ -87,14 +101,22 @@
                     <input type="text" id="regiao" name="regiao" placeholder="Ex: Zona Sul, Centro..." required>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group full-width">
+                    <label for="descricao">Descrição dos Serviços</label>
+                    <textarea id="descricao" name="descricao" rows="4" placeholder="Descreva sua experiência e os serviços que você oferece..." required></textarea>
+                </div>
+
+                <div class="form-group full-width">
                     <label class="checkbox-label">
                         <input type="checkbox" required>
                         Li e aceito os <a href="termos.html">termos de uso</a> e <a href="privacidade.html">política de privacidade</a>
                     </label>
                 </div>
 
-                <button type="submit" class="btn-cadastrar">Cadastrar</button>
+                <button type="submit" class="btn-cadastrar">
+                    <i class="fas fa-user-plus"></i>
+                    Criar Conta
+                </button>
             </form>
         </section>
     </main>

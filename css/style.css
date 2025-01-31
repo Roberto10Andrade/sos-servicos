@@ -56,46 +56,176 @@ body {
 
 /* Header Styles */
 header {
-    background: var(--glass-background);
-    backdrop-filter: blur(10px);
-    border-bottom: var(--glass-border);
+    background-color: var(--white);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    transition: all 0.3s ease;
-}
-
-header.scrolled {
-    background: var(--white);
-    box-shadow: var(--card-shadow);
+    padding: 0.5rem 0;
 }
 
 nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.5rem 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 5%;
-    max-width: 1400px;
-    margin: 0 auto;
 }
 
+main {
+    padding-top: 80px; /* Espaço para compensar o header fixo */
+}
+
+/* Logo com trabalhadores */
 .logo {
     display: flex;
     align-items: center;
-    padding: 0.75rem;
+    padding: 0.5rem;
 }
 
-.logo-img {
-    height: 45px;
-    width: auto;
+.logo a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.logo-container {
+    position: relative;
+    display: inline-block;
+    padding: 15px 25px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 30px;
+    overflow: hidden;
+    border: 2px solid rgba(74, 144, 226, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
-    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
 }
 
-.logo-img:hover {
-    transform: translateY(-2px);
-    filter: drop-shadow(0 6px 8px rgba(59, 130, 246, 0.2));
+.logo-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 25%, rgba(74, 144, 226, 0.05) 50%, transparent 75%);
+    z-index: 1;
+}
+
+.logo-text {
+    font-size: 2.5rem;
+    font-weight: 800;
+    position: relative;
+    display: flex;
+    align-items: center;
+    z-index: 3;
+}
+
+.logo-text .sos {
+    color: #4A90E2;
+    position: relative;
+    display: inline-block;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+}
+
+.logo-text .servicos {
+    color: #333;
+    font-size: 1.8rem;
+    font-style: italic;
+    margin-left: 5px;
+}
+
+.workers-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.worker-icon {
+    position: absolute;
+    font-size: 1.2rem;
+    color: #4A90E2;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+/* Posicionamento dos trabalhadores */
+.worker-icon:nth-child(1) { /* Eletricista */
+    top: 5px;
+    left: 10px;
+}
+
+.worker-icon:nth-child(2) { /* Encanador */
+    bottom: 5px;
+    left: 10px;
+}
+
+.worker-icon:nth-child(3) { /* Técnico */
+    top: 5px;
+    right: 10px;
+}
+
+.worker-icon:nth-child(4) { /* Instalador */
+    bottom: 5px;
+    right: 10px;
+}
+
+/* Círculos decorativos como na imagem */
+.circle-decoration {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px dashed rgba(74, 144, 226, 0.3);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.circle-1 {
+    top: 10%;
+    left: 20%;
+}
+
+.circle-2 {
+    bottom: 10%;
+    right: 20%;
+}
+
+/* Linhas pontilhadas */
+.dashed-line {
+    position: absolute;
+    width: 30px;
+    height: 2px;
+    background: repeating-linear-gradient(90deg, rgba(74, 144, 226, 0.3) 0px, rgba(74, 144, 226, 0.3) 4px, transparent 4px, transparent 8px);
+    z-index: 1;
+}
+
+.line-1 {
+    top: 30%;
+    right: 15%;
+    transform: rotate(45deg);
+}
+
+.line-2 {
+    bottom: 30%;
+    left: 15%;
+    transform: rotate(-45deg);
+}
+
+.logo-container:hover {
+    background: linear-gradient(135deg, #f1f3f5 0%, #e9ecef 100%);
+    box-shadow: 0 6px 12px rgba(74, 144, 226, 0.1);
+    border-color: rgba(74, 144, 226, 0.2);
+}
+
+.logo-container:hover .worker-icon {
+    color: #2E86AB;
+    transform: scale(1.2);
+    opacity: 1;
 }
 
 .nav-links {
@@ -432,11 +562,23 @@ nav {
 /* Forms */
 .cadastro-container {
     max-width: 800px;
-    margin: 2rem auto;
-    background: var(--white);
+    margin: 100px auto 50px;
     padding: 3rem;
-    border-radius: 20px;
+    background: var(--white);
+    border-radius: 24px;
     box-shadow: var(--card-shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.cadastro-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: var(--primary-gradient);
 }
 
 .cadastro-header {
@@ -448,15 +590,32 @@ nav {
     font-size: 2.5rem;
     color: var(--text-color);
     margin-bottom: 1rem;
+    font-weight: 700;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .cadastro-header p {
     color: var(--text-light);
     font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.cadastro-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
 }
 
 .form-group {
-    margin-bottom: 2rem;
+    position: relative;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
 }
 
 .form-group label {
@@ -464,12 +623,12 @@ nav {
     margin-bottom: 0.75rem;
     color: var(--text-color);
     font-weight: 500;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
-input,
-select,
-textarea {
+.form-group input,
+.form-group select,
+.form-group textarea {
     width: 100%;
     padding: 1rem 1.25rem;
     border: 2px solid #E5E7EB;
@@ -479,12 +638,17 @@ textarea {
     background: var(--white);
 }
 
-input:focus,
-select:focus,
-textarea:focus {
-    outline: none;
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
     border-color: var(--primary-color);
     box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
 }
 
 .checkbox-label {
@@ -492,7 +656,7 @@ textarea:focus {
     align-items: center;
     gap: 0.75rem;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--text-light);
 }
 
@@ -500,10 +664,23 @@ textarea:focus {
     width: 20px;
     height: 20px;
     border-radius: 6px;
+    cursor: pointer;
+}
+
+.checkbox-label a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.checkbox-label a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
 }
 
 .btn-cadastrar {
-    width: 100%;
+    grid-column: 1 / -1;
     padding: 1.25rem;
     background: var(--primary-gradient);
     color: var(--white);
@@ -513,12 +690,33 @@ textarea:focus {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-cadastrar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.btn-cadastrar:hover::before {
+    left: 100%;
 }
 
 .btn-cadastrar:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 8px 16px rgba(59, 130, 246, 0.2);
 }
 
 /* Modal */
@@ -529,18 +727,18 @@ textarea:focus {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1001;
+    background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(8px);
+    z-index: 1000;
 }
 
 .modal-content {
-    background: var(--white);
-    padding: 3rem;
-    border-radius: 20px;
-    max-width: 500px;
-    margin: 100px auto;
     position: relative;
+    background: var(--white);
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 2.5rem;
+    border-radius: 20px;
     box-shadow: var(--hover-shadow);
     animation: modalSlideIn 0.3s ease;
 }
@@ -556,13 +754,60 @@ textarea:focus {
     }
 }
 
+.modal-content h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    border: 2px solid #E5E7EB;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.modal-content input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+    outline: none;
+}
+
+.modal-content button {
+    width: 100%;
+    padding: 1rem;
+    background: var(--primary-gradient);
+    color: var(--white);
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-content button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
+}
+
 .close {
     position: absolute;
-    right: 1.5rem;
     top: 1.5rem;
+    right: 1.5rem;
     font-size: 1.5rem;
-    cursor: pointer;
     color: var(--text-light);
+    cursor: pointer;
     transition: all 0.3s ease;
     width: 32px;
     height: 32px;
@@ -573,8 +818,8 @@ textarea:focus {
 }
 
 .close:hover {
-    color: var(--text-color);
     background: rgba(0, 0, 0, 0.05);
+    color: var(--text-color);
     transform: rotate(90deg);
 }
 
@@ -792,7 +1037,190 @@ footer::before {
     }
 }
 
-/* Responsive Design */
+/* Estilos para os filtros */
+.filtros-container {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.filtros-principais {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.campo-busca {
+    flex: 1;
+    min-width: 250px;
+    position: relative;
+}
+
+.campo-busca i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6B7280;
+}
+
+.campo-busca input {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.campo-busca input:focus {
+    border-color: #3B82F6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    outline: none;
+}
+
+.filtro-select {
+    padding: 12px;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    font-size: 1rem;
+    min-width: 200px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.btn-filtros {
+    padding: 12px 20px;
+    background: #F3F4F6;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.btn-filtros:hover {
+    background: #E5E7EB;
+}
+
+.painel-filtros-avancados {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #E5E7EB;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.filtro-grupo {
+    padding: 15px;
+}
+
+.filtro-grupo h4 {
+    margin-bottom: 10px;
+    color: #374151;
+}
+
+.estrelas-filtro {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.estrelas-filtro label {
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.estrelas-filtro label:hover {
+    background-color: #F3F4F6;
+}
+
+.checkbox-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.checkbox-grupo label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.range-slider {
+    padding: 10px 0;
+}
+
+.range-values {
+    margin-top: 10px;
+    text-align: center;
+    color: #6B7280;
+}
+
+.filtros-acoes {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding-top: 20px;
+    border-top: 1px solid #E5E7EB;
+}
+
+.btn-primario {
+    padding: 10px 20px;
+    background: #3B82F6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primario:hover {
+    background: #2563EB;
+}
+
+.btn-secundario {
+    padding: 10px 20px;
+    background: white;
+    color: #374151;
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-secundario:hover {
+    background: #F3F4F6;
+}
+
+.resultados-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: #F9FAFB;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.ordenacao {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Responsividade */
 @media (max-width: 768px) {
     .hero h2 {
         font-size: 2.5rem;
@@ -865,5 +1293,150 @@ footer::before {
 @keyframes spin {
     to {
         transform: rotate(360deg);
+    }
+}
+
+/* Estilos para o banner de serviços */
+.banner-servicos {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    margin-top: 40px; /* Adicionando espaço após a navegação */
+}
+
+.banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8);
+}
+
+.banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    color: white;
+    padding-top: 120px; /* Aumentando o espaço do topo */
+}
+
+.banner-overlay h1 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.banner-overlay p {
+    font-size: 1.25rem;
+    max-width: 700px;
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .banner-servicos {
+        height: 350px;
+        margin-top: 30px;
+    }
+
+    .banner-overlay {
+        padding-top: 100px;
+    }
+
+    .banner-overlay h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner-servicos {
+        height: 300px;
+        margin-top: 20px;
+    }
+
+    .banner-overlay {
+        padding-top: 80px;
+    }
+
+    .banner-overlay h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .cadastro-container {
+        margin: 80px 1rem 2rem;
+        padding: 2rem;
+    }
+
+    .cadastro-header h2 {
+        font-size: 2rem;
+    }
+
+    .cadastro-form {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .modal-content {
+        margin: 80px 1rem;
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cadastro-container {
+        padding: 1.5rem;
+    }
+
+    .cadastro-header h2 {
+        font-size: 1.75rem;
+    }
+
+    .form-group label {
+        font-size: 0.95rem;
+    }
+
+    .btn-cadastrar {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo-text {
+        font-size: 2rem;
+    }
+    
+    .logo-text .servicos {
+        font-size: 1.5rem;
+    }
+
+    .worker-icon {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-text {
+        font-size: 1.8rem;
+    }
+    
+    .logo-text .servicos {
+        font-size: 1.3rem;
+    }
+
+    .worker-icon {
+        font-size: 0.7rem;
     }
 }
