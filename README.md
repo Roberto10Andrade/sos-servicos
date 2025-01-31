@@ -63,18 +63,6 @@ git clone https://github.com/seu-usuario/sos-servicos.git
 - [ ] App mobile
 - [ ] Geolocalização de prestadores
 
-## 📝 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
-## 👥 Contribuição
-
-1. Faça um Fork do projeto
-2. Crie uma Branch para sua Feature (`git checkout -b feature/AmazingFeature`)
-3. Faça o Commit de suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Faça o Push para a Branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
-
 ## 📞 Contato
 
 - Website: [sosservicos.com.br](https://sosservicos.com.br)
