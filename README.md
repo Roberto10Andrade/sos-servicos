@@ -14,7 +14,7 @@ Uma plataforma web moderna para conectar prestadores de serviços a clientes que
 
 - HTML5
 - CSS3
-- JavaScript (Vanilla)
+- JavaScript
 - Font Awesome para ícones
 - LocalStorage para persistência de dados
 
