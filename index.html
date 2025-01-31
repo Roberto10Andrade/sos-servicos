@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOS Serviços - Encontre Profissionais de Confiança</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>SOS Serviços</h1>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="active">Início</a>
+                <a href="servicos.html">Serviços</a>
+                <a href="cadastro.html" class="destaque">Cadastre-se</a>
+                <a href="#" onclick="toggleLogin()" class="login-btn">Login</a>
+            </div>
+        </nav>
+    </header>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="toggleLogin()">&times;</span>
+            <h2>Login</h2>
+            <form id="loginForm">
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Senha" required>
+                <button type="submit">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <main>
+        <section class="hero">
+            <h2>Encontre os Melhores Profissionais</h2>
+            <p>Conectamos você aos melhores prestadores de serviços da sua região</p>
+            <div class="search-container">
+                <select id="categoria">
+                    <option value="">Todas as categorias</option>
+                    <option value="eletricista">Eletricista</option>
+                    <option value="encanador">Encanador</option>
+                    <option value="pedreiro">Pedreiro</option>
+                    <option value="pintor">Pintor</option>
+                    <option value="jardineiro">Jardineiro</option>
+                </select>
+                <input type="text" id="busca" placeholder="Digite o serviço que precisa...">
+                <button onclick="buscarServicos()">Buscar</button>
+            </div>
+        </section>
+
+        <section class="categorias">
+            <h3>Categorias Populares</h3>
+            <div class="categoria-grid">
+                <div class="categoria-card" onclick="window.location.href='servicos.html?categoria=eletricista'">
+                    <i class="fas fa-bolt"></i>
+                    <h4>Eletricista</h4>
+                </div>
+                <div class="categoria-card" onclick="window.location.href='servicos.html?categoria=encanador'">
+                    <i class="fas fa-faucet"></i>
+                    <h4>Encanador</h4>
+                </div>
+                <div class="categoria-card" onclick="window.location.href='servicos.html?categoria=pedreiro'">
+                    <i class="fas fa-hard-hat"></i>
+                    <h4>Pedreiro</h4>
+                </div>
+                <div class="categoria-card" onclick="window.location.href='servicos.html?categoria=pintor'">
+                    <i class="fas fa-paint-roller"></i>
+                    <h4>Pintor</h4>
+                </div>
+            </div>
+        </section>
+
+        <section class="como-funciona">
+            <h3>Como Funciona</h3>
+            <div class="steps">
+                <div class="step">
+                    <i class="fas fa-search"></i>
+                    <h4>Busque</h4>
+                    <p>Encontre o serviço que precisa</p>
+                </div>
+                <div class="step">
+                    <i class="fas fa-user-check"></i>
+                    <h4>Escolha</h4>
+                    <p>Selecione o profissional ideal</p>
+                </div>
+                <div class="step">
+                    <i class="fas fa-comments"></i>
+                    <h4>Contate</h4>
+                    <p>Entre em contato diretamente</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>SOS Serviços</h4>
+                <p>Conectando você aos melhores profissionais</p>
+            </div>
+            <div class="footer-section">
+                <h4>Links Úteis</h4>
+                <a href="sobre.html">Sobre Nós</a>
+                <a href="contato.html">Contato</a>
+                <a href="termos.html">Termos de Uso</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SOS Serviços - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

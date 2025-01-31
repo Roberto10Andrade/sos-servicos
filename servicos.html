@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços Disponíveis - SOS Serviços</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>SOS Serviços</h1>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Início</a>
+                <a href="servicos.html" class="active">Serviços</a>
+                <a href="cadastro.html" class="destaque">Cadastre-se</a>
+                <a href="#" onclick="toggleLogin()" class="login-btn">Login</a>
+            </div>
+        </nav>
+    </header>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="toggleLogin()">&times;</span>
+            <h2>Login</h2>
+            <form id="loginForm">
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Senha" required>
+                <button type="submit">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <main>
+        <section class="servicos-header">
+            <h2>Profissionais Disponíveis</h2>
+            <div class="filtros">
+                <select id="categoria">
+                    <option value="">Todas as categorias</option>
+                    <option value="eletricista">Eletricista</option>
+                    <option value="encanador">Encanador</option>
+                    <option value="pedreiro">Pedreiro</option>
+                    <option value="pintor">Pintor</option>
+                    <option value="jardineiro">Jardineiro</option>
+                    <option value="diarista">Diarista</option>
+                </select>
+                <input type="text" id="busca" placeholder="Buscar por nome ou serviço...">
+            </div>
+        </section>
+
+        <section class="lista-servicos" id="lista-servicos">
+            <!-- Cards dos prestadores serão inseridos aqui via JavaScript -->
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>SOS Serviços</h4>
+                <p>Conectando você aos melhores profissionais</p>
+            </div>
+            <div class="footer-section">
+                <h4>Links Úteis</h4>
+                <a href="sobre.html">Sobre Nós</a>
+                <a href="contato.html">Contato</a>
+                <a href="termos.html">Termos de Uso</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SOS Serviços - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
