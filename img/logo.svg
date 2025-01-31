@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .logo-bg { fill: #2A2D3E; }
+        .icon-primary { fill: #10B981; }
+        .icon-secondary { fill: #E5E7EB; }
+        .text { fill: #FFFFFF; font-family: Arial, sans-serif; font-size: 72px; font-weight: bold; }
+    </style>
+    
+    <!-- Background -->
+    <rect class="logo-bg" width="800" height="400"/>
+    
+    <!-- Tools Left -->
+    <g transform="translate(100,150)">
+        <circle class="icon-primary" cx="20" cy="20" r="5"/>
+        <circle class="icon-primary" cx="20" cy="80" r="5"/>
+        <rect class="icon-secondary" x="10" y="25" width="20" height="50"/>
+        <path class="icon-primary" d="M0,20 L40,20 L35,40 L5,40 Z"/>
+    </g>
+    
+    <!-- Handshake -->
+    <g transform="translate(300,100)">
+        <circle class="icon-secondary" cx="100" cy="100" r="80" stroke="#10B981" stroke-width="10"/>
+        <path class="icon-primary" d="M60,100 C60,80 80,80 100,80 C120,80 140,80 140,100 C140,120 120,120 100,120 C80,120 60,120 60,100 Z"/>
+    </g>
+    
+    <!-- Tools Right -->
+    <g transform="translate(600,150)">
+        <circle class="icon-primary" cx="20" cy="20" r="5"/>
+        <rect class="icon-secondary" x="10" y="25" width="20" height="50"/>
+        <circle class="icon-primary" cx="60" cy="20" r="3"/>
+        <rect class="icon-primary" x="58" y="23" width="4" height="30"/>
+    </g>
+    
+    <!-- Text -->
+    <text class="text" x="400" y="350" text-anchor="middle">SOS SERVIÇOS</text>
+</svg>
