@@ -4,11 +4,14 @@ Uma plataforma web moderna para conectar prestadores de serviços a clientes que
 
 ## 🚀 Funcionalidades
 
-- 🔍 Busca inteligente de prestadores de serviços
-- 👤 Cadastro de prestadores e clientes
-- ⭐ Sistema de avaliações e comentários
+- 🔍 Busca inteligente de prestadores de serviços por categoria e localização
+- 👤 Cadastro simplificado para prestadores e clientes
+- ⭐ Sistema de avaliações e comentários para garantir qualidade
 - 💬 Contato direto via WhatsApp ou email
 - 📱 Design responsivo para todas as telas
+- 🔒 Verificação de prestadores de serviços
+- 📍 Busca por proximidade
+- 💳 Sistema de orçamentos integrados
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -17,28 +20,8 @@ Uma plataforma web moderna para conectar prestadores de serviços a clientes que
 - JavaScript
 - Font Awesome para ícones
 - LocalStorage para persistência de dados
-
-## 📁 Estrutura do Projeto
-
-```
-SOS SERVIÇOS/
-├── assets/
-│   ├── images/
-│   │   ├── logo.svg
-│   │   └── logo_new.svg
-│   └── fonts/
-├── css/
-│   └── style.css
-├── js/
-│   └── app.js
-├── pages/
-│   ├── cadastro.html
-│   ├── servicos.html
-│   ├── sobre.html
-│   ├── contato.html
-│   └── termos.html
-└── index.html
-```
+- API de Geolocalização
+- Integração com WhatsApp Business API
 
 ## 🚀 Como Usar
 
