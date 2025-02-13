@@ -6,6 +6,7 @@
     <title>Serviços Disponíveis - SOS Serviços</title>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
 </head>
 <body>
     <header>
@@ -36,6 +37,7 @@
                 <a href="servicos.html" class="active">Serviços</a>
                 <a href="cadastro.html" class="destaque">Cadastre-se</a>
                 <a href="#" onclick="toggleLogin()" class="login-btn">Login</a>
+                <button class="accessibility-btn" onclick="toggleAccessibility()">Acessibilidade</button>
             </div>
         </nav>
     </header>
@@ -171,6 +173,107 @@
         </div>
     </footer>
 
+    <div class="resultados-busca">
+        <!-- Os resultados da busca serão inseridos aqui via JavaScript -->
+    </div>
+
+    <!-- Chatbot -->
+    <div id="chatbot" class="chatbot">
+        <div class="chatbot-header">
+            <h3><i class="fas fa-robot"></i> Assistente Virtual</h3>
+            <div class="chatbot-controls">
+                <button class="minimize-btn"><i class="fas fa-minus"></i></button>
+                <button class="close-btn"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        <div class="chatbot-messages">
+            <!-- Mensagens serão inseridas via JavaScript -->
+        </div>
+        <div class="chatbot-input">
+            <input type="text" placeholder="Digite sua mensagem...">
+            <button><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <button id="chatbot-trigger" class="chatbot-trigger">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <!-- Botão de Contato Rápido -->
+    <div class="quick-contact">
+        <button id="contact-trigger" class="contact-trigger">
+            <i class="fas fa-phone"></i>
+        </button>
+        <div class="contact-options">
+            <a href="tel:0800123456" class="contact-option phone">
+                <i class="fas fa-phone"></i>
+                <span>0800 123 456</span>
+            </a>
+            <a href="https://wa.me/5511999999999" target="_blank" class="contact-option whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                <span>WhatsApp</span>
+            </a>
+            <a href="mailto:contato@sosservicos.com" class="contact-option email">
+                <i class="fas fa-envelope"></i>
+                <span>E-mail</span>
+            </a>
+        </div>
+    </div>
+
     <script src="../js/app.js"></script>
+    <script src="../js/suporte.js"></script>
+    <script src="../js/accessibility.js"></script>
+
+    <script>
+    // Inicializar a busca assim que a página carregar
+    document.addEventListener('DOMContentLoaded', () => {
+        // Realizar busca inicial para mostrar todos os prestadores
+        buscarServicos();
+
+        // Adicionar event listeners para busca em tempo real
+        document.getElementById('busca').addEventListener('input', buscarServicos);
+        document.getElementById('categoria').addEventListener('change', buscarServicos);
+        document.getElementById('ordenar').addEventListener('change', buscarServicos);
+
+        // Event listeners para filtros avançados
+        document.querySelectorAll('.estrelas-filtro input').forEach(input => {
+            input.addEventListener('change', buscarServicos);
+        });
+
+        document.getElementById('experiencia').addEventListener('change', buscarServicos);
+        
+        document.querySelectorAll('.checkbox-grupo input').forEach(checkbox => {
+            checkbox.addEventListener('change', buscarServicos);
+        });
+
+        // Atualizar total de resultados
+        const atualizarTotal = (total) => {
+            document.getElementById('totalResultados').textContent = total;
+        };
+
+        // Mostrar/ocultar filtros avançados
+        document.getElementById('filtrosAvancados').addEventListener('click', () => {
+            const painel = document.getElementById('painelFiltrosAvancados');
+            painel.style.display = painel.style.display === 'none' ? 'grid' : 'none';
+        });
+
+        // Limpar filtros
+        document.getElementById('limparFiltros').addEventListener('click', () => {
+            document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+            document.querySelectorAll('input[type="radio"]').forEach(rd => rd.checked = false);
+            document.getElementById('experiencia').value = '';
+            document.getElementById('precoMin').value = 0;
+            document.getElementById('precoMax').value = 200;
+            document.getElementById('valorMin').textContent = '0';
+            document.getElementById('valorMax').textContent = '200';
+            buscarServicos();
+        });
+    });
+
+    function toggleAccessibility() {
+        // Lógica para alternar as opções de acessibilidade
+        // Exemplo: aumentar/diminuir fonte, alternar contraste
+    }
+    </script>
 </body>
 </html>

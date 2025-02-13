@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SOS Serviços - Encontre Profissionais de Confiança</title>
+    <meta name="description" content="SOS Serviços - Conectando você aos melhores profissionais">
+    <!-- Tags de acessibilidade -->
+    <meta name="theme-color" content="#3B82F6">
+    <link rel="manifest" href="manifest.json">
+    <title>SOS Serviços</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/theme.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -34,11 +39,43 @@
             <div class="nav-links">
                 <a href="index.html" class="active">Início</a>
                 <a href="pages/servicos.html">Serviços</a>
-                <a href="pages/cadastro.html" class="destaque">Cadastre-se</a>
-                <a href="#" onclick="toggleLogin()" class="login-btn">Login</a>
+                <div class="nav-buttons">
+                    <div class="accessibility-wrapper">
+                        <button class="accessibility-btn" onclick="toggleAccessibilityMenu()">
+                            <i class="fas fa-universal-access"></i>
+                            Acessibilidade
+                        </button>
+                        <div class="accessibility-menu">
+                            <button onclick="toggleTheme('light')" aria-label="Tema claro">
+                                <i class="fas fa-sun"></i>
+                                Tema Claro
+                            </button>
+                            <button onclick="toggleTheme('dark')" aria-label="Tema escuro">
+                                <i class="fas fa-moon"></i>
+                                Tema Escuro
+                            </button>
+                            <button onclick="toggleTheme('high-contrast')" aria-label="Alto contraste">
+                                <i class="fas fa-adjust"></i>
+                                Alto Contraste
+                            </button>
+                            <button onclick="adjustFontSize('increase')" aria-label="Aumentar fonte">
+                                <i class="fas fa-text-height"></i>
+                                Aumentar Fonte
+                            </button>
+                            <button onclick="toggleSpacing()" aria-label="Ajustar espaçamento">
+                                <i class="fas fa-text-width"></i>
+                                Ajustar Espaçamento
+                            </button>
+                        </div>
+                    </div>
+                    <a href="pages/cadastro.html" class="destaque">Cadastre-se</a>
+                    <a href="#" onclick="toggleLogin()" class="login-btn">Login</a>
+                </div>
             </div>
         </nav>
     </header>
+
+    <a href="#main" class="skip-link">Pular para o conteúdo principal</a>
 
     <div id="loginModal" class="modal">
         <div class="modal-content">
@@ -133,6 +170,38 @@
                 </div>
             </div>
         </section>
+
+        <!-- Seção de Ranking -->
+        <section class="ranking-section">
+            <div class="ranking-container">
+                <div class="section-header">
+                    <h2>Profissionais em Destaque</h2>
+                    <p>Conheça os prestadores mais bem avaliados da plataforma</p>
+                </div>
+                
+                <div class="ranking-tabs">
+                    <div class="ranking-tab active" data-tipo="avaliados">Mais Avaliados</div>
+                    <div class="ranking-tab" data-tipo="pesquisados">Mais Pesquisados</div>
+                    <div class="ranking-tab" data-tipo="tendencias">Tendências</div>
+                </div>
+                
+                <div class="ranking-cards">
+                    <!-- Cards serão inseridos via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Promoções -->
+        <section class="promocoes-section">
+            <div class="section-header">
+                <h2>Promoções e Cupons</h2>
+                <p>Economize na contratação dos melhores profissionais</p>
+            </div>
+            
+            <div class="promocoes-grid">
+                <!-- Cupons serão inseridos via JavaScript -->
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -153,6 +222,51 @@
         </div>
     </footer>
 
+    <!-- Chatbot -->
+    <div id="chatbot" class="chatbot">
+        <div class="chatbot-header">
+            <h3><i class="fas fa-robot"></i> Assistente Virtual</h3>
+            <div class="chatbot-controls">
+                <button class="minimize-btn"><i class="fas fa-minus"></i></button>
+                <button class="close-btn"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        <div class="chatbot-messages">
+            <!-- Mensagens serão inseridas via JavaScript -->
+        </div>
+        <div class="chatbot-input">
+            <input type="text" placeholder="Digite sua mensagem...">
+            <button><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <button id="chatbot-trigger" class="chatbot-trigger">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <!-- Novo botão de contato rápido -->
+    <div class="quick-contact">
+        <button id="contact-trigger" class="contact-trigger">
+            <i class="fas fa-phone"></i>
+        </button>
+        <div class="contact-options">
+            <a href="tel:0800123456" class="contact-option phone">
+                <i class="fas fa-phone"></i>
+                <span>0800 123 456</span>
+            </a>
+            <a href="https://wa.me/5511999999999" target="_blank" class="contact-option whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                <span>WhatsApp</span>
+            </a>
+            <a href="mailto:contato@sosservicos.com" class="contact-option email">
+                <i class="fas fa-envelope"></i>
+                <span>E-mail</span>
+            </a>
+        </div>
+    </div>
+
     <script src="js/app.js"></script>
+    <script src="js/suporte.js"></script>
+    <script src="js/accessibility.js"></script>
 </body>
 </html>

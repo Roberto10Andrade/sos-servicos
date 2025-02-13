@@ -53,72 +53,130 @@
     </div>
 
     <main>
-        <section class="cadastro-container">
-            <div class="cadastro-header">
-                <h2>Cadastro de Prestador de Serviços</h2>
-                <p>Preencha o formulário abaixo para começar a oferecer seus serviços</p>
+        <div class="cadastro-container">
+            <div class="cadastro-tabs">
+                <button class="tab-btn active" data-tab="cliente">Cliente</button>
+                <button class="tab-btn" data-tab="prestador">Prestador</button>
             </div>
-            
-            <form id="cadastroForm" class="cadastro-form">
-                <div class="form-group">
-                    <label for="nome">Nome Completo</label>
-                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+
+            <!-- Formulário de Cliente -->
+            <form id="formCliente" class="cadastro-form active">
+                <h2>Cadastro de Cliente</h2>
+                
+                <div class="social-login">
+                    <button type="button" class="btn-social google">
+                        <i class="fab fa-google"></i> Continuar com Google
+                    </button>
+                    <button type="button" class="btn-social facebook">
+                        <i class="fab fa-facebook"></i> Continuar com Facebook
+                    </button>
                 </div>
 
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Digite seu melhor email" required>
+                <div class="separator">ou</div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="clienteNome">Nome Completo</label>
+                        <input type="text" id="clienteNome" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="clienteEmail">E-mail</label>
+                        <input type="email" id="clienteEmail" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="clienteTelefone">Telefone</label>
+                        <input type="tel" id="clienteTelefone" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="clienteSenha">Senha</label>
+                        <input type="password" id="clienteSenha" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="clienteEndereco">Endereço</label>
+                        <input type="text" id="clienteEndereco" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="clienteCEP">CEP</label>
+                        <input type="text" id="clienteCEP" required>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="senha">Senha</label>
-                    <input type="password" id="senha" name="senha" placeholder="Digite uma senha segura" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="whatsapp">WhatsApp</label>
-                    <input type="tel" id="whatsapp" name="whatsapp" placeholder="(11) 99999-9999" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="servico">Tipo de Serviço</label>
-                    <select id="servico" name="servico" required>
-                        <option value="">Selecione um serviço</option>
-                        <option value="Eletricista">Eletricista</option>
-                        <option value="Encanador">Encanador</option>
-                        <option value="Pedreiro">Pedreiro</option>
-                        <option value="Pintor">Pintor</option>
-                        <option value="Jardineiro">Jardineiro</option>
-                        <option value="Diarista">Diarista</option>
-                        <option value="Marceneiro">Marceneiro</option>
-                        <option value="Técnico de TI">Técnico de TI</option>
-                        <option value="Ar Condicionado">Técnico de Ar Condicionado</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="regiao">Região de Atendimento</label>
-                    <input type="text" id="regiao" name="regiao" placeholder="Ex: Zona Sul, Centro..." required>
-                </div>
-
-                <div class="form-group full-width">
-                    <label for="descricao">Descrição dos Serviços</label>
-                    <textarea id="descricao" name="descricao" rows="4" placeholder="Descreva sua experiência e os serviços que você oferece..." required></textarea>
-                </div>
-
-                <div class="form-group full-width">
-                    <label class="checkbox-label">
-                        <input type="checkbox" required>
-                        Li e aceito os <a href="termos.html">termos de uso</a> e <a href="privacidade.html">política de privacidade</a>
+                <div class="form-terms">
+                    <input type="checkbox" id="clienteTermos" required>
+                    <label for="clienteTermos">
+                        Li e aceito os <a href="#">Termos de Uso</a> e <a href="#">Política de Privacidade</a>
                     </label>
                 </div>
 
-                <button type="submit" class="btn-cadastrar">
-                    <i class="fas fa-user-plus"></i>
-                    Criar Conta
-                </button>
+                <button type="submit" class="btn-cadastrar">Criar Conta</button>
             </form>
-        </section>
+
+            <!-- Formulário de Prestador -->
+            <form id="formPrestador" class="cadastro-form">
+                <h2>Cadastro de Prestador</h2>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="prestadorNome">Nome Completo</label>
+                        <input type="text" id="prestadorNome" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="prestadorEmail">E-mail Profissional</label>
+                        <input type="email" id="prestadorEmail" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="prestadorTelefone">Telefone Comercial</label>
+                        <input type="tel" id="prestadorTelefone" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="prestadorCPF">CPF/CNPJ</label>
+                        <input type="text" id="prestadorCPF" required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="prestadorServicos">Categorias de Serviços</label>
+                        <select id="prestadorServicos" multiple required>
+                            <option value="eletricista">Eletricista</option>
+                            <option value="encanador">Encanador</option>
+                            <option value="pedreiro">Pedreiro</option>
+                            <!-- Mais opções... -->
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="prestadorDescricao">Descrição dos Serviços</label>
+                        <textarea id="prestadorDescricao" rows="4" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="prestadorDocumentos">Documentos (RG, CPF, Certificações)</label>
+                        <input type="file" id="prestadorDocumentos" multiple accept=".pdf,.jpg,.png">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="prestadorPortfolio">Fotos do Portfólio</label>
+                        <input type="file" id="prestadorPortfolio" multiple accept="image/*">
+                    </div>
+                </div>
+
+                <div class="form-terms">
+                    <input type="checkbox" id="prestadorTermos" required>
+                    <label for="prestadorTermos">
+                        Li e aceito os <a href="#">Termos de Uso</a> e <a href="#">Política de Privacidade</a>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-cadastrar">Solicitar Cadastro</button>
+            </form>
+        </div>
     </main>
 
     <footer>

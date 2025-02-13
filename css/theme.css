@@ -1,0 +1,266 @@
+:root {
+    /* Cores base */
+    --primary-color: #3B82F6;
+    --secondary-color: #10B981;
+    --accent-color: #F59E0B;
+    --text-color: #1F2937;
+    --text-light: #6B7280;
+    --background: #F3F4F6;
+    --white: #FFFFFF;
+    
+    /* Gradientes */
+    --primary-gradient: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+    --secondary-gradient: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    --accent-gradient: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+    
+    /* Sombras */
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    
+    /* Fontes */
+    --font-size-base: 16px;
+    --line-height-base: 1.5;
+    --font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Tema escuro */
+[data-theme="dark"] {
+    --primary-color: #60A5FA;
+    --secondary-color: #34D399;
+    --accent-color: #FBBF24;
+    --text-color: #F9FAFB;
+    --text-light: #D1D5DB;
+    --background: #111827;
+    --white: #1F2937;
+    
+    /* Ajuste de sombras para tema escuro */
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+    --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+}
+
+/* Alto contraste */
+[data-theme="high-contrast"] {
+    --primary-color: #FFFF00;
+    --secondary-color: #00FF00;
+    --accent-color: #FF00FF;
+    --text-color: #FFFFFF;
+    --text-light: #FFFFFF;
+    --background: #000000;
+    --white: #000000;
+    
+    /* Remover gradientes e sombras para melhor contraste */
+    --primary-gradient: none;
+    --secondary-gradient: none;
+    --accent-gradient: none;
+    --card-shadow: none;
+    --hover-shadow: none;
+}
+
+/* Tamanho de fonte ajustável */
+[data-font-size="large"] {
+    --font-size-base: 18px;
+}
+
+[data-font-size="larger"] {
+    --font-size-base: 20px;
+}
+
+/* Espaçamento aumentado para melhor legibilidade */
+[data-spacing="increased"] {
+    --line-height-base: 1.8;
+}
+
+/* Foco visível para navegação por teclado */
+*:focus {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Esconder elementos visualmente mas manter para leitores de tela */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Skip link para navegação por teclado */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 8px;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Melhorias de acessibilidade para formulários */
+input, select, textarea {
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+}
+
+/* Labels visíveis */
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+/* Mensagens de erro acessíveis */
+.error-message {
+    color: #DC2626;
+    font-weight: 500;
+    margin-top: 0.5rem;
+}
+
+/* Botões acessíveis */
+button, 
+.btn {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.5rem 1rem;
+}
+
+/* Melhorar visibilidade do foco */
+*:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Melhorar contraste em texto sobre gradientes */
+[data-theme="high-contrast"] .primary-gradient {
+    background: var(--primary-color);
+    color: var(--background);
+}
+
+/* Ajustes para tema escuro */
+[data-theme="dark"] img {
+    filter: brightness(0.8);
+}
+
+/* Ajustes para espaçamento aumentado */
+[data-spacing="increased"] {
+    letter-spacing: 0.5px;
+    word-spacing: 2px;
+}
+
+[data-spacing="increased"] p,
+[data-spacing="increased"] li {
+    margin-bottom: 1.5em;
+}
+
+/* Animações reduzidas para usuários que preferem menos movimento */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Manter apenas o novo botão de acessibilidade */
+.accessibility-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    color: var(--text-color);
+    border: 1px solid var(--text-light);
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    height: 40px;
+}
+
+.accessibility-btn i {
+    font-size: 1rem;
+    color: var(--primary-color);
+}
+
+.accessibility-btn:hover {
+    background: var(--background);
+    transform: translateY(-1px);
+}
+
+.accessibility-btn:active {
+    transform: translateY(0);
+}
+
+/* Para agrupar os botões na navbar */
+.nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: auto;
+}
+
+/* Ajuste adicional para a nav-links */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* Wrapper para o botão e menu de acessibilidade */
+.accessibility-wrapper {
+    position: relative;
+}
+
+/* Menu de acessibilidade */
+.accessibility-menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+    padding: 0.5rem;
+    min-width: 200px;
+    z-index: 1000;
+    display: none;
+}
+
+.accessibility-menu.show {
+    display: block;
+}
+
+.accessibility-menu button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    gap: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    background: transparent;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 0.875rem;
+    text-align: left;
+    transition: background-color 0.2s;
+}
+
+.accessibility-menu button:hover {
+    background: var(--background);
+}
+
+.accessibility-menu button i {
+    width: 20px;
+    color: var(--primary-color);
+} 
