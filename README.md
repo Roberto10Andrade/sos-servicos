@@ -38,16 +38,3 @@ git clone https://github.com/seu-usuario/sos-servicos.git
    - Avalie os serviços
    - Entre em contato com os profissionais
 
-## 💡 Recursos Futuros
-
-- [ ] Sistema de login com autenticação
-- [ ] Chat integrado
-- [ ] Sistema de pagamentos
-- [ ] App mobile
-- [ ] Geolocalização de prestadores
-
-## 📞 Contato
-
-- Website: [sosservicos.com.br](https://sosservicos.com.br)
-- Email: contato@sosservicos.com.br
-- LinkedIn: [SOS Serviços](https://linkedin.com/company/sosservicos)
