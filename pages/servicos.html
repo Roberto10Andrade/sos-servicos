@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços Disponíveis - SOS Serviços</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/theme.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="../index.html">
+                    <div class="logo-container">
+                        <div class="logo-text">
+                            <span class="sos">SOS</span>
+                            <span class="servicos">serviços</span>
+                        </div>
+                        <div class="workers-container">
+                            <i class="fas fa-hard-hat worker-icon"></i>
+                            <i class="fas fa-wrench worker-icon"></i>
+                            <i class="fas fa-plug worker-icon"></i>
+                            <i class="fas fa-tools worker-icon"></i>
+                        </div>
+                        <!-- Elementos decorativos -->
+                        <div class="circle-decoration circle-1"></div>
+                        <div class="circle-decoration circle-2"></div>
+                        <div class="dashed-line line-1"></div>
+                        <div class="dashed-line line-2"></div>
+                    </div>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Início</a>
+                <a href="servicos.html" class="active">Serviços</a>
+                <a href="cadastro.html" class="destaque">Cadastre-se</a>
+                <a href="#" onclick="toggleLogin()" class="login-btn">Login</a>
+                <button class="accessibility-btn" onclick="toggleAccessibility()">Acessibilidade</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="banner-servicos">
+            <img src="../assets/images/DALL·E-2025-01-31-18.42.png" alt="Encontre profissionais qualificados" class="banner-img">
+            <div class="banner-overlay">
+                <h1>Encontre os Melhores Profissionais</h1>
+                <p>Use nossos filtros avançados para encontrar o profissional ideal para seu serviço</p>
+            </div>
+        </section>
+
+        <section class="servicos-header">
+            <h2>Encontre o Profissional Ideal</h2>
+            <div class="filtros-container">
+                <div class="filtros-principais">
+                    <div class="campo-busca">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="busca" placeholder="Buscar por nome, serviço ou localização...">
+                    </div>
+                    <select id="categoria" class="filtro-select">
+                        <option value="">Todas as categorias</option>
+                        <option value="eletricista">Eletricista</option>
+                        <option value="encanador">Encanador</option>
+                        <option value="pedreiro">Pedreiro</option>
+                        <option value="pintor">Pintor</option>
+                        <option value="jardineiro">Jardineiro</option>
+                        <option value="diarista">Diarista</option>
+                        <option value="marceneiro">Marceneiro</option>
+                        <option value="mecanico">Mecânico</option>
+                    </select>
+                    <button id="filtrosAvancados" class="btn-filtros">
+                        <i class="fas fa-sliders-h"></i> Filtros Avançados
+                    </button>
+                </div>
+                
+                <div id="painelFiltrosAvancados" class="painel-filtros-avancados" style="display: none;">
+                    <div class="filtro-grupo">
+                        <h4>Avaliação Mínima</h4>
+                        <div class="estrelas-filtro">
+                            <input type="radio" name="avaliacao" value="5" id="star5">
+                            <label for="star5">⭐⭐⭐⭐⭐</label>
+                            <input type="radio" name="avaliacao" value="4" id="star4">
+                            <label for="star4">⭐⭐⭐⭐</label>
+                            <input type="radio" name="avaliacao" value="3" id="star3">
+                            <label for="star3">⭐⭐⭐</label>
+                        </div>
+                    </div>
+                    
+                    <div class="filtro-grupo">
+                        <h4>Experiência</h4>
+                        <select id="experiencia" class="filtro-select">
+                            <option value="">Qualquer experiência</option>
+                            <option value="iniciante">Iniciante (0-2 anos)</option>
+                            <option value="intermediario">Intermediário (2-5 anos)</option>
+                            <option value="experiente">Experiente (5+ anos)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filtro-grupo">
+                        <h4>Disponibilidade</h4>
+                        <div class="checkbox-grupo">
+                            <label><input type="checkbox" value="manha"> Manhã</label>
+                            <label><input type="checkbox" value="tarde"> Tarde</label>
+                            <label><input type="checkbox" value="noite"> Noite</label>
+                            <label><input type="checkbox" value="fimdesemana"> Fim de semana</label>
+                        </div>
+                    </div>
+                    
+                    <div class="filtro-grupo">
+                        <h4>Preço por Hora</h4>
+                        <div class="range-slider">
+                            <input type="range" id="precoMin" min="0" max="200" value="0">
+                            <input type="range" id="precoMax" min="0" max="200" value="200">
+                            <div class="range-values">
+                                R$ <span id="valorMin">0</span> - R$ <span id="valorMax">200</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="filtro-grupo">
+                        <h4>Certificações</h4>
+                        <div class="checkbox-grupo">
+                            <label><input type="checkbox" value="senai"> SENAI</label>
+                            <label><input type="checkbox" value="sebrae"> SEBRAE</label>
+                            <label><input type="checkbox" value="crea"> CREA</label>
+                        </div>
+                    </div>
+                    
+                    <div class="filtros-acoes">
+                        <button id="limparFiltros" class="btn-secundario">Limpar Filtros</button>
+                        <button id="aplicarFiltros" class="btn-primario">Aplicar Filtros</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="resultados-info">
+            <p><span id="totalResultados">0</span> profissionais encontrados</p>
+            <div class="ordenacao">
+                <label for="ordenar">Ordenar por:</label>
+                <select id="ordenar" class="filtro-select">
+                    <option value="relevancia">Relevância</option>
+                    <option value="avaliacao">Melhor Avaliação</option>
+                    <option value="preco_menor">Menor Preço</option>
+                    <option value="preco_maior">Maior Preço</option>
+                    <option value="experiencia">Mais Experiente</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="lista-servicos" id="lista-servicos">
+            <!-- Cards dos prestadores serão inseridos aqui via JavaScript -->
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>SOS Serviços</h4>
+                <p>Conectando você aos melhores profissionais</p>
+            </div>
+            <div class="footer-section">
+                <h4>Links Úteis</h4>
+                <a href="sobre.html">Sobre Nós</a>
+                <a href="contato.html">Contato</a>
+                <a href="termos.html">Termos de Uso</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SOS Serviços - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <div class="resultados-busca">
+        <!-- Os resultados da busca serão inseridos aqui via JavaScript -->
+    </div>
+
+    <!-- Chatbot -->
+    <div id="chatbot" class="chatbot">
+        <div class="chatbot-header">
+            <h3><i class="fas fa-robot"></i> Assistente Virtual</h3>
+            <div class="chatbot-controls">
+                <button class="minimize-btn"><i class="fas fa-minus"></i></button>
+                <button class="close-btn"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        <div class="chatbot-messages">
+            <!-- Mensagens serão inseridas via JavaScript -->
+        </div>
+        <div class="chatbot-input">
+            <input type="text" placeholder="Digite sua mensagem...">
+            <button><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <button id="chatbot-trigger" class="chatbot-trigger">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <!-- Botão de Contato Rápido -->
+    <div class="quick-contact">
+        <button id="contact-trigger" class="contact-trigger">
+            <i class="fas fa-phone"></i>
+        </button>
+        <div class="contact-options">
+            <a href="tel:0800123456" class="contact-option phone">
+                <i class="fas fa-phone"></i>
+                <span>0800 123 456</span>
+            </a>
+            <a href="https://wa.me/5511999999999" target="_blank" class="contact-option whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                <span>WhatsApp</span>
+            </a>
+            <a href="mailto:contato@sosservicos.com" class="contact-option email">
+                <i class="fas fa-envelope"></i>
+                <span>E-mail</span>
+            </a>
+        </div>
+    </div>
+
+    <script src="../js/app.js"></script>
+    <script src="../js/suporte.js"></script>
+    <script src="../js/accessibility.js"></script>
+
+    <script>
+    // Inicializar a busca assim que a página carregar
+    document.addEventListener('DOMContentLoaded', () => {
+        // Realizar busca inicial para mostrar todos os prestadores
+        buscarServicos();
+
+        // Adicionar event listeners para busca em tempo real
+        document.getElementById('busca').addEventListener('input', buscarServicos);
+        document.getElementById('categoria').addEventListener('change', buscarServicos);
+        document.getElementById('ordenar').addEventListener('change', buscarServicos);
+
+        // Event listeners para filtros avançados
+        document.querySelectorAll('.estrelas-filtro input').forEach(input => {
+            input.addEventListener('change', buscarServicos);
+        });
+
+        document.getElementById('experiencia').addEventListener('change', buscarServicos);
+        
+        document.querySelectorAll('.checkbox-grupo input').forEach(checkbox => {
+            checkbox.addEventListener('change', buscarServicos);
+        });
+
+        // Atualizar total de resultados
+        const atualizarTotal = (total) => {
+            document.getElementById('totalResultados').textContent = total;
+        };
+
+        // Mostrar/ocultar filtros avançados
+        document.getElementById('filtrosAvancados').addEventListener('click', () => {
+            const painel = document.getElementById('painelFiltrosAvancados');
+            painel.style.display = painel.style.display === 'none' ? 'grid' : 'none';
+        });
+
+        // Limpar filtros
+        document.getElementById('limparFiltros').addEventListener('click', () => {
+            document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+            document.querySelectorAll('input[type="radio"]').forEach(rd => rd.checked = false);
+            document.getElementById('experiencia').value = '';
+            document.getElementById('precoMin').value = 0;
+            document.getElementById('precoMax').value = 200;
+            document.getElementById('valorMin').textContent = '0';
+            document.getElementById('valorMax').textContent = '200';
+            buscarServicos();
+        });
+    });
+
+    function toggleAccessibility() {
+        // Lógica para alternar as opções de acessibilidade
+        // Exemplo: aumentar/diminuir fonte, alternar contraste
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SOS Serviços - Conectando você aos melhores profissionais">
+    <!-- Tags de acessibilidade -->
+    <meta name="theme-color" content="#3B82F6">
+    <link rel="manifest" href="manifest.json">
+    <title>SOS Serviços</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <div class="logo-container">
+                        <div class="logo-text">
+                            <span class="sos">SOS</span>
+                            <span class="servicos">serviços</span>
+                        </div>
+                        <div class="workers-container">
+                            <i class="fas fa-hard-hat worker-icon"></i>
+                            <i class="fas fa-wrench worker-icon"></i>
+                            <i class="fas fa-plug worker-icon"></i>
+                            <i class="fas fa-tools worker-icon"></i>
+                        </div>
+                        <!-- Elementos decorativos -->
+                        <div class="circle-decoration circle-1"></div>
+                        <div class="circle-decoration circle-2"></div>
+                        <div class="dashed-line line-1"></div>
+                        <div class="dashed-line line-2"></div>
+                    </div>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="active">Início</a>
+                <a href="pages/servicos.html">Serviços</a>
+                <a href="pages/planos.html" class="planos-btn">Planos <span class="badge-promo">Novo</span></a>
+                <div class="nav-buttons">
+                    <div class="accessibility-wrapper">
+                        <button class="accessibility-btn" onclick="toggleAccessibilityMenu()">
+                            <i class="fas fa-universal-access"></i>
+                            Acessibilidade
+                        </button>
+                        <div class="accessibility-menu">
+                            <button onclick="toggleTheme('light')" aria-label="Tema claro">
+                                <i class="fas fa-sun"></i>
+                                Tema Claro
+                            </button>
+                            <button onclick="toggleTheme('dark')" aria-label="Tema escuro">
+                                <i class="fas fa-moon"></i>
+                                Tema Escuro
+                            </button>
+                            <button onclick="toggleTheme('high-contrast')" aria-label="Alto contraste">
+                                <i class="fas fa-adjust"></i>
+                                Alto Contraste
+                            </button>
+                            <button onclick="adjustFontSize('increase')" aria-label="Aumentar fonte">
+                                <i class="fas fa-text-height"></i>
+                                Aumentar Fonte
+                            </button>
+                            <button onclick="toggleSpacing()" aria-label="Ajustar espaçamento">
+                                <i class="fas fa-text-width"></i>
+                                Ajustar Espaçamento
+                            </button>
+                        </div>
+                    </div>
+                    <a href="pages/cadastro.html" class="destaque">Cadastre-se</a>
+                    <a href="#" onclick="toggleLogin()" class="login-btn">Login</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <a href="#main" class="skip-link">Pular para o conteúdo principal</a>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="toggleLogin()">&times;</span>
+            <h2>Login</h2>
+            <form id="loginForm">
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Senha" required>
+                <button type="submit">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <main>
+        <section class="hero">
+            <h2>Encontre os Melhores Profissionais</h2>
+            <p>Conectamos você aos melhores prestadores de serviços da sua região</p>
+            <div class="search-container">
+                <select id="categoria">
+                    <option value="">Todas as categorias</option>
+                    <option value="eletricista">Eletricista</option>
+                    <option value="encanador">Encanador</option>
+                    <option value="pedreiro">Pedreiro</option>
+                    <option value="pintor">Pintor</option>
+                    <option value="jardineiro">Jardineiro</option>
+                </select>
+                <input type="text" id="busca" placeholder="Digite o serviço que precisa...">
+                <button onclick="buscarServicos()">Buscar</button>
+            </div>
+        </section>
+
+        <section class="categorias">
+            <h3>Categorias Populares</h3>
+            <div class="categoria-grid">
+                <div class="categoria-card" onclick="window.location.href='pages/servicos.html?categoria=eletricista'">
+                    <i class="fas fa-bolt"></i>
+                    <h4>Eletricista</h4>
+                </div>
+                <div class="categoria-card" onclick="window.location.href='pages/servicos.html?categoria=encanador'">
+                    <i class="fas fa-faucet"></i>
+                    <h4>Encanador</h4>
+                </div>
+                <div class="categoria-card" onclick="window.location.href='pages/servicos.html?categoria=pedreiro'">
+                    <i class="fas fa-hard-hat"></i>
+                    <h4>Pedreiro</h4>
+                </div>
+                <div class="categoria-card" onclick="window.location.href='pages/servicos.html?categoria=pintor'">
+                    <i class="fas fa-paint-roller"></i>
+                    <h4>Pintor</h4>
+                </div>
+            </div>
+        </section>
+
+        <section class="como-funciona">
+            <div class="section-header">
+                <h2>Como Funciona</h2>
+                <p>Encontre o profissional ideal em 3 passos simples</p>
+            </div>
+            
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-search"></i>
+                        <span class="step-number">1</span>
+                    </div>
+                    <h3>Busque</h3>
+                    <p>Encontre o serviço que precisa usando nossa busca inteligente</p>
+                    <div class="step-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-user-check"></i>
+                        <span class="step-number">2</span>
+                    </div>
+                    <h3>Escolha</h3>
+                    <p>Selecione o profissional ideal baseado em avaliações e experiência</p>
+                    <div class="step-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-comments"></i>
+                        <span class="step-number">3</span>
+                    </div>
+                    <h3>Contate</h3>
+                    <p>Entre em contato diretamente e combine o serviço</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Ranking -->
+        <section class="ranking-section">
+            <div class="ranking-container">
+                <div class="section-header">
+                    <h2>Profissionais em Destaque</h2>
+                    <p>Conheça os prestadores mais bem avaliados da plataforma</p>
+                </div>
+                
+                <div class="ranking-tabs">
+                    <div class="ranking-tab active" data-tipo="avaliados">Mais Avaliados</div>
+                    <div class="ranking-tab" data-tipo="pesquisados">Mais Pesquisados</div>
+                    <div class="ranking-tab" data-tipo="tendencias">Tendências</div>
+                </div>
+                
+                <div class="ranking-cards">
+                    <!-- Cards serão inseridos via JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Promoções -->
+        <section class="promocoes-section">
+            <div class="section-header">
+                <h2>Promoções e Planos</h2>
+                <p>Economize na contratação dos melhores profissionais</p>
+            </div>
+            
+            <!-- Nova seção de planos de assinatura -->
+            <div class="planos-container">
+                <div class="plano-card basico">
+                    <h3>Plano Básico</h3>
+                    <div class="preco">
+                        <span class="valor">R$ 29,90</span>
+                        <span class="periodo">/mês</span>
+                    </div>
+                    <ul class="beneficios">
+                        <li><i class="fas fa-check"></i> 5% de desconto em serviços</li>
+                        <li><i class="fas fa-check"></i> Chat prioritário</li>
+                        <li><i class="fas fa-check"></i> 3 cupons mensais</li>
+                    </ul>
+                    <button class="assinar-btn">Assinar Agora</button>
+                </div>
+
+                <div class="plano-card premium destaque">
+                    <span class="badge-destaque">Mais Popular</span>
+                    <h3>Plano Premium</h3>
+                    <div class="preco">
+                        <span class="valor">R$ 49,90</span>
+                        <span class="periodo">/mês</span>
+                    </div>
+                    <ul class="beneficios">
+                        <li><i class="fas fa-check"></i> 15% de desconto em serviços</li>
+                        <li><i class="fas fa-check"></i> Atendimento VIP</li>
+                        <li><i class="fas fa-check"></i> 5 cupons mensais</li>
+                        <li><i class="fas fa-check"></i> Seguro residencial básico</li>
+                    </ul>
+                    <button class="assinar-btn">Assinar Agora</button>
+                </div>
+
+                <div class="plano-card empresarial">
+                    <h3>Plano Empresarial</h3>
+                    <div class="preco">
+                        <span class="valor">R$ 99,90</span>
+                        <span class="periodo">/mês</span>
+                    </div>
+                    <ul class="beneficios">
+                        <li><i class="fas fa-check"></i> 25% de desconto em serviços</li>
+                        <li><i class="fas fa-check"></i> Gerente de conta dedicado</li>
+                        <li><i class="fas fa-check"></i> Cupons ilimitados</li>
+                        <li><i class="fas fa-check"></i> Seguro residencial completo</li>
+                        <li><i class="fas fa-check"></i> Relatórios mensais</li>
+                    </ul>
+                    <button class="assinar-btn">Assinar Agora</button>
+                </div>
+            </div>
+
+            <!-- Seção de cupons atualizada -->
+            <div class="cupons-container">
+                <h3>Cupons Disponíveis</h3>
+                <div class="cupons-grid">
+                    <div class="cupom-card">
+                        <div class="cupom-valor">30% OFF</div>
+                        <div class="cupom-info">
+                            <h4>Primeira Contratação</h4>
+                            <p>Válido para novos usuários</p>
+                            <div class="cupom-codigo">
+                                <span>BEMVINDO30</span>
+                                <button class="copiar-btn" onclick="copiarCupom('BEMVINDO30')">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cupom-validade">Válido até 31/12/2025</div>
+                    </div>
+
+                    <div class="cupom-card destaque">
+                        <div class="cupom-valor">R$ 50 OFF</div>
+                        <div class="cupom-info">
+                            <h4>Serviços Elétricos</h4>
+                            <p>Em serviços acima de R$ 200</p>
+                            <div class="cupom-codigo">
+                                <span>ELETRICA50</span>
+                                <button class="copiar-btn" onclick="copiarCupom('ELETRICA50')">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cupom-validade">Válido até 30/06/2025</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>SOS Serviços</h4>
+                <p>Conectando você aos melhores profissionais</p>
+            </div>
+            <div class="footer-section">
+                <h4>Links Úteis</h4>
+                <a href="pages/sobre.html">Sobre Nós</a>
+                <a href="pages/contato.html">Contato</a>
+                <a href="pages/termos.html">Termos de Uso</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SOS Serviços - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div id="chatbot" class="chatbot">
+        <div class="chatbot-header">
+            <h3><i class="fas fa-robot"></i> Assistente Virtual</h3>
+            <div class="chatbot-controls">
+                <button class="minimize-btn"><i class="fas fa-minus"></i></button>
+                <button class="close-btn"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        <div class="chatbot-messages">
+            <!-- Mensagens serão inseridas via JavaScript -->
+        </div>
+        <div class="chatbot-input">
+            <input type="text" placeholder="Digite sua mensagem...">
+            <button><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <button id="chatbot-trigger" class="chatbot-trigger">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <!-- Novo botão de contato rápido -->
+    <div class="quick-contact">
+        <button id="contact-trigger" class="contact-trigger">
+            <i class="fas fa-phone"></i>
+        </button>
+        <div class="contact-options">
+            <a href="tel:0800123456" class="contact-option phone">
+                <i class="fas fa-phone"></i>
+                <span>0800 123 456</span>
+            </a>
+            <a href="https://wa.me/5511999999999" target="_blank" class="contact-option whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                <span>WhatsApp</span>
+            </a>
+            <a href="mailto:contato@sosservicos.com" class="contact-option email">
+                <i class="fas fa-envelope"></i>
+                <span>E-mail</span>
+            </a>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/suporte.js"></script>
+    <script src="js/accessibility.js"></script>
+</body>
+</html>
