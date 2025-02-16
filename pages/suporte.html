@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central de Ajuda - SOS Serviços</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header igual ao das outras páginas -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="../index.html">
+                    <div class="logo-container">
+                        <div class="logo-text">
+                            <span class="sos">SOS</span>
+                            <span class="servicos">serviços</span>
+                        </div>
+                        <div class="workers-container">
+                            <i class="fas fa-hard-hat worker-icon"></i>
+                            <i class="fas fa-wrench worker-icon"></i>
+                            <i class="fas fa-plug worker-icon"></i>
+                            <i class="fas fa-tools worker-icon"></i>
+                        </div>
+                        <div class="circle-decoration circle-1"></div>
+                        <div class="circle-decoration circle-2"></div>
+                        <div class="dashed-line line-1"></div>
+                        <div class="dashed-line line-2"></div>
+                    </div>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Início</a>
+                <a href="servicos.html">Serviços</a>
+                <a href="cadastro.html">Cadastre-se</a>
+                <a href="suporte.html" class="active">Suporte</a>
+                <a href="#" onclick="toggleLogin()" class="login-btn">Login</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="suporte-hero">
+            <h1>Como podemos ajudar?</h1>
+            <div class="suporte-search">
+                <input type="text" id="buscaAjuda" placeholder="Digite sua dúvida...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </section>
+
+        <section class="suporte-container">
+            <div class="suporte-grid">
+                <!-- Canais de Atendimento -->
+                <div class="suporte-card">
+                    <h2><i class="fas fa-headset"></i> Canais de Atendimento</h2>
+                    <div class="canais-atendimento">
+                        <div class="canal">
+                            <i class="fas fa-phone"></i>
+                            <h3>Telefone</h3>
+                            <p>0800 123 4567</p>
+                            <span>Seg-Sex: 8h às 20h</span>
+                        </div>
+                        <div class="canal">
+                            <i class="fas fa-envelope"></i>
+                            <h3>E-mail</h3>
+                            <p>suporte@sosservicos.com</p>
+                            <span>Resposta em até 24h</span>
+                        </div>
+                        <div class="canal">
+                            <i class="fab fa-whatsapp"></i>
+                            <h3>WhatsApp</h3>
+                            <p>(11) 99999-9999</p>
+                            <span>Atendimento 24/7</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ -->
+                <div class="faq-section">
+                    <h2>Perguntas Frequentes</h2>
+                    
+                    <div class="faq-categorias">
+                        <button class="categoria-btn active" data-categoria="geral">Geral</button>
+                        <button class="categoria-btn" data-categoria="pagamentos">Pagamentos</button>
+                        <button class="categoria-btn" data-categoria="servicos">Serviços</button>
+                        <button class="categoria-btn" data-categoria="conta">Conta</button>
+                    </div>
+
+                    <div class="faq-lista">
+                        <!-- As perguntas serão inseridas via JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Chatbot -->
+    <div id="chatbot" class="chatbot">
+        <div class="chatbot-header">
+            <h3><i class="fas fa-robot"></i> Assistente Virtual</h3>
+            <div class="chatbot-controls">
+                <button class="minimize-btn"><i class="fas fa-minus"></i></button>
+                <button class="close-btn"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        <div class="chatbot-messages">
+            <!-- Mensagens serão inseridas via JavaScript -->
+        </div>
+        <div class="chatbot-input">
+            <input type="text" placeholder="Digite sua mensagem...">
+            <button><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <button id="chatbot-trigger" class="chatbot-trigger">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <!-- Footer igual ao das outras páginas -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>SOS Serviços</h4>
+                <p>Conectando você aos melhores profissionais</p>
+            </div>
+            <div class="footer-links">
+                <a href="sobre.html">Sobre Nós</a>
+                <a href="contato.html">Contato</a>
+                <a href="termos.html">Termos de Uso</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SOS Serviços - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script src="../js/suporte.js"></script>
+</body>
+</html> 

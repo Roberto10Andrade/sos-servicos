@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SOS Serviços - Detalhes do Prestador">
+    <meta name="theme-color" content="#3B82F6">
+    <title>Detalhes do Prestador - SOS Serviços</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Variáveis de cores */
+        :root {
+            --whatsapp-color: #25D366;
+            --whatsapp-hover: #1EA355;
+            --email-color: #EA4335;
+            --email-hover: #D93025;
+            --rating-color: #FFB800;
+            --rating-hover: #F5A623;
+        }
+
+        /* Estilos dos botões de ação */
+        .action-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .whatsapp-button {
+            background: var(--whatsapp-color);
+            color: white;
+        }
+
+        .whatsapp-button:hover {
+            background: var(--whatsapp-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(37, 211, 102, 0.2);
+        }
+
+        .email-button {
+            background: var(--email-color);
+            color: white;
+        }
+
+        .email-button:hover {
+            background: var(--email-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(234, 67, 53, 0.2);
+        }
+
+        .rating-button {
+            background: var(--rating-color);
+            color: white;
+        }
+
+        .rating-button:hover {
+            background: var(--rating-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(255, 184, 0, 0.2);
+        }
+
+        /* Melhorias nos ícones dos botões */
+        .action-button i {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .action-button:hover i {
+            transform: scale(1.2);
+        }
+
+        /* Melhorias no container de ações */
+        .perfil-acoes {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            min-width: 200px;
+        }
+
+        /* Melhorias nos badges */
+        .badge {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .badge:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Melhorias nos cards de avaliação */
+        .avaliacao-card {
+            background: var(--background);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .avaliacao-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Separador da navbar */
+        .navbar-spacer {
+            height: 100px;
+            width: 100%;
+            display: block;
+            margin-bottom: 2rem;
+        }
+
+        /* Ajuste para navbar fixa */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            z-index: 1000;
+            box-shadow: var(--card-shadow);
+        }
+
+        /* Ajuste para evitar sobreposição com a navbar */
+        main {
+            padding-top: 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        /* Estilos para a página do prestador */
+        .prestador-perfil {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 1rem;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            z-index: 1;
+        }
+
+        .perfil-header {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 2rem;
+            align-items: center;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--background);
+        }
+
+        .perfil-foto {
+            width: 200px;
+            height: 200px;
+            border-radius: 1rem;
+            object-fit: cover;
+        }
+
+        .perfil-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .perfil-nome {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .perfil-servico {
+            font-size: 1.25rem;
+            color: var(--text-light);
+        }
+
+        .perfil-avaliacao {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        .perfil-corpo {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .perfil-info-rapida {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            list-style: none;
+            margin-top: 0;
+            padding: 0;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            list-style: none;
+        }
+
+        .perfil-detalhes {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .detalhe-grupo {
+            background: var(--background);
+            padding: 1.5rem;
+            border-radius: 1rem;
+        }
+
+        .detalhe-grupo h3 {
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .badges-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .disponibilidade-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 0.5rem;
+        }
+
+        .periodo-item {
+            background: var(--white);
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            border: 1px solid var(--primary-color);
+        }
+
+        .avaliacoes-section {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 1rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .avaliacao-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-spacer {
+                height: 80px;
+                margin-bottom: 1rem;
+            }
+            .perfil-header {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .perfil-foto {
+                margin: 0 auto;
+            }
+            .perfil-corpo {
+                grid-template-columns: 1fr;
+            }
+            .perfil-acoes {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+            .action-button {
+                flex: 1;
+                min-width: 150px;
+                padding: 0.75rem 1rem;
+            }
+        }
+
+        /* Estilos para o modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .modal form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .modal textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 0.5rem;
+            border: 1px solid var(--text-light);
+            border-radius: 0.5rem;
+        }
+
+        .horarios-disponiveis {
+            margin-top: 1.5rem;
+        }
+
+        .horarios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .horario-slot {
+            padding: 0.5rem;
+            text-align: center;
+            background: var(--background);
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .horario-slot:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .horario-slot.selecionado {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .horario-slot.indisponivel {
+            background: #f0f0f0;
+            color: #999;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="../index.html">
+                    <div class="logo-container">
+                        <div class="logo-text">
+                            <span class="sos">SOS</span>
+                            <span class="servicos">serviços</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Início</a>
+                <a href="servicos.html">Serviços</a>
+                <div class="nav-buttons">
+                    <div class="accessibility-wrapper">
+                        <button class="accessibility-btn" onclick="toggleAccessibilityMenu()">
+                            <i class="fas fa-universal-access"></i>
+                            Acessibilidade
+                        </button>
+                        <div class="accessibility-menu">
+                            <button onclick="toggleTheme('light')" aria-label="Tema claro">
+                                <i class="fas fa-sun"></i>
+                                Tema Claro
+                            </button>
+                            <button onclick="toggleTheme('dark')" aria-label="Tema escuro">
+                                <i class="fas fa-moon"></i>
+                                Tema Escuro
+                            </button>
+                            <button onclick="toggleTheme('high-contrast')" aria-label="Alto contraste">
+                                <i class="fas fa-adjust"></i>
+                                Alto Contraste
+                            </button>
+                            <button onclick="adjustFontSize('increase')" aria-label="Aumentar fonte">
+                                <i class="fas fa-text-height"></i>
+                                Aumentar Fonte
+                            </button>
+                            <button onclick="toggleSpacing()" aria-label="Ajustar espaçamento">
+                                <i class="fas fa-text-width"></i>
+                                Ajustar Espaçamento
+                            </button>
+                        </div>
+                    </div>
+                <a href="cadastro.html" class="destaque">Cadastre-se</a>
+                <a href="#" onclick="toggleLogin()" class="login-btn">Login</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="navbar-spacer"></div>
+
+    <main>
+        <div class="prestador-perfil">
+            <div class="perfil-header">
+                <img src="" alt="" class="perfil-foto">
+                <div class="perfil-info">
+                    <h1 class="perfil-nome"></h1>
+                    <p class="perfil-servico"></p>
+                    <div class="perfil-avaliacao"></div>
+                    <div class="perfil-info-rapida">
+                        <div class="info-item">
+                            <span class="regiao"></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="experiencia"></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="total-servicos"></span>
+                        </div>
+                    </div>
+                    <p class="descricao"></p>
+                </div>
+                <div class="perfil-acoes">
+                    <a href="#" class="action-button whatsapp-button">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="#" class="action-button email-button">
+                        <i class="far fa-envelope"></i> E-mail
+                    </a>
+                    <button class="action-button rating-button" onclick="avaliarServico()">
+                        <i class="far fa-star"></i> Avaliar
+                    </button>
+                </div>
+            </div>
+
+            <div class="perfil-corpo">
+                <!-- Galeria de Trabalhos -->
+                <div class="galeria-trabalhos">
+                    <h2>Trabalhos Realizados</h2>
+                    <div class="galeria-grid">
+                        <!-- Será preenchido via JavaScript -->
+                    </div>
+                    <button class="ver-mais-btn" onclick="carregarMaisTrabalhos()">
+                        Ver mais trabalhos
+                    </button>
+                </div>
+
+                <!-- Calendário e Agendamento -->
+                <div class="agendamento-section">
+                    <h2>Horários Disponíveis</h2>
+                    <div class="horarios-disponiveis">
+                        <div class="horarios-grid">
+                            <div class="horario-slot">08:00</div>
+                            <div class="horario-slot">09:00</div>
+                            <div class="horario-slot">10:00</div>
+                            <div class="horario-slot">11:00</div>
+                            <div class="horario-slot">13:00</div>
+                            <div class="horario-slot">14:00</div>
+                            <div class="horario-slot">15:00</div>
+                            <div class="horario-slot">16:00</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ do Prestador -->
+                <div class="faq-section">
+                    <h2>Perguntas Frequentes</h2>
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <div class="faq-pergunta">
+                                <h3>Qual a forma de pagamento?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-resposta">
+                                <p>Aceito pagamentos em dinheiro, PIX, cartão de débito e crédito.</p>
+                            </div>
+                        </div>
+                        <!-- Mais itens de FAQ serão adicionados dinamicamente -->
+                    </div>
+                </div>
+
+                <div class="perfil-detalhes">
+                    <div class="detalhe-grupo">
+                        <h3>Certificações</h3>
+                        <div class="badges-container certificacoes"></div>
+                    </div>
+
+                    <div class="detalhe-grupo">
+                        <h3>Disponibilidade</h3>
+                        <div class="disponibilidade-grid"></div>
+                    </div>
+
+                    <div class="detalhe-grupo">
+                        <h3>Preço por Hora</h3>
+                        <p class="preco-valor"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="avaliacoes-section">
+            <h2>Avaliações</h2>
+        <div class="avaliacoes-container">
+            <!-- Avaliações serão preenchidas via JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>SOS Serviços</h4>
+                <p>Conectando você aos melhores profissionais</p>
+            </div>
+            <div class="footer-section">
+                <h4>Links Úteis</h4>
+                <a href="sobre.html">Sobre Nós</a>
+                <a href="contato.html">Contato</a>
+                <a href="termos.html">Termos de Uso</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SOS Serviços - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div id="chatbot" class="chatbot">
+        <div class="chatbot-header">
+            <h3><i class="fas fa-robot"></i> Assistente Virtual</h3>
+            <div class="chatbot-controls">
+                <button class="minimize-btn"><i class="fas fa-minus"></i></button>
+                <button class="close-btn"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        <div class="chatbot-messages">
+            <!-- Mensagens serão inseridas via JavaScript -->
+        </div>
+        <div class="chatbot-input">
+            <input type="text" placeholder="Digite sua mensagem...">
+            <button><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <button id="chatbot-trigger" class="chatbot-trigger">
+        <i class="fas fa-comments"></i>
+    </button>
+
+    <!-- Botão de Contato Rápido -->
+    <div class="quick-contact">
+        <button id="contact-trigger" class="contact-trigger">
+            <i class="fas fa-phone"></i>
+        </button>
+        <div class="contact-options">
+            <a href="tel:0800123456" class="contact-option phone">
+                <i class="fas fa-phone"></i>
+                <span>0800 123 456</span>
+            </a>
+            <a href="https://wa.me/SEUNUMERO" class="action-button whatsapp-button">
+                <i class="fab fa-whatsapp"></i> Contatar via WhatsApp
+            </a>
+            <a href="mailto:seuemail@exemplo.com" class="action-button email-button">
+                <i class="far fa-envelope"></i> Enviar E-mail
+            </a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/app.js"></script>
+    <script src="../js/suporte.js"></script>
+    <script src="../js/accessibility.js"></script>
+    <script src="../js/prestador.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Pegar o ID do prestador da URL
+        const params = new URLSearchParams(window.location.search);
+        const prestadorId = parseInt(params.get('id'));
+        
+        if (!prestadorId) {
+            window.location.href = '../index.html';
+            return;
+        }
+
+        // Encontrar o prestador
+        const prestador = prestadores.find(p => p.id === prestadorId);
+        if (!prestador) {
+            window.location.href = '../index.html';
+            return;
+        }
+
+        // Preencher os dados do prestador
+        document.querySelector('.perfil-foto').src = prestador.foto;
+        document.querySelector('.perfil-foto').alt = prestador.nome;
+        document.querySelector('.perfil-nome').textContent = prestador.nome;
+        document.querySelector('.perfil-servico').textContent = prestador.servico;
+        document.querySelector('.perfil-avaliacao').innerHTML = `${gerarEstrelas(prestador.avaliacao)} (${prestador.avaliacao.toFixed(1)})`;
+        document.querySelector('.descricao').textContent = prestador.descricao;
+        document.querySelector('.preco-valor').textContent = `R$ ${prestador.precoHora.toFixed(2)}/hora`;
+
+        // Atualizar links de contato
+        document.querySelector('.whatsapp-button').href = `https://wa.me/${prestador.whatsapp}`;
+        document.querySelector('.email-button').href = `mailto:${prestador.email}`;
+
+        // Preencher certificações
+        const certContainer = document.querySelector('.certificacoes');
+        prestador.certificacoes.forEach(cert => {
+            const badge = document.createElement('span');
+            badge.className = 'badge';
+            badge.textContent = cert.toUpperCase();
+            certContainer.appendChild(badge);
+        });
+
+        // Preencher disponibilidade
+        const dispContainer = document.querySelector('.disponibilidade-grid');
+        prestador.disponibilidade.forEach(periodo => {
+            const item = document.createElement('div');
+            item.className = 'periodo-item';
+            item.textContent = formatarPeriodo(periodo);
+            dispContainer.appendChild(item);
+        });
+
+        // Preencher avaliações
+        const avaliacoesContainer = document.querySelector('.avaliacoes-container');
+        prestador.comentarios.forEach(comentario => {
+            const card = document.createElement('div');
+            card.className = 'avaliacao-card';
+            card.innerHTML = `
+                <div class="avaliacao-header">
+                    <strong>${comentario.usuario}</strong>
+                    <div>${gerarEstrelas(comentario.nota)} (${comentario.nota})</div>
+                </div>
+                <p>${comentario.texto}</p>
+            `;
+            avaliacoesContainer.appendChild(card);
+        });
+    });
+
+    // Função para avaliar serviço
+    function avaliarServico() {
+        const params = new URLSearchParams(window.location.search);
+        const prestadorId = parseInt(params.get('id'));
+        if (prestadorId) {
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <span class="close" onclick="this.parentElement.parentElement.remove()">&times;</span>
+                    <h2>Avaliar Serviço</h2>
+                    <form onsubmit="submitAvaliacao(event, ${prestadorId})">
+                        <div class="rating">
+                            <input type="number" name="nota" min="1" max="5" required>
+                        </div>
+                        <textarea name="comentario" required placeholder="Conte sua experiência..."></textarea>
+                        <button type="submit" class="action-button">Enviar Avaliação</button>
+                    </form>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+    }
+    </script>
+</body>
+</html> 

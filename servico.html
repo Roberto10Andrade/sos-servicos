@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOS Serviços - Encontre Profissionais de Confiança</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/images/logo.png" alt="SOS Serviços" class="logo-img">
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Início</a>
+                <a href="servicos.html" class="active">Serviços</a>
+                <a href="sobre.html">Sobre</a>
+                <a href="contato.html">Contato</a>
+                <a href="cadastro.html" class="destaque">Cadastre-se</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="servicos-main">
+        <section class="banner-servicos">
+            <img src="assets/images/DALL·E-2025-01-31-18.42.png" alt="Banner Serviços" class="banner-img">
+            <div class="banner-overlay">
+                <h1>Encontre os Melhores Profissionais</h1>
+                <p>Conectamos você aos melhores prestadores de serviços da sua região</p>
+            </div>
+        </section>
+
+        <section class="search-section">
+            <div class="search-container">
+                <select class="categoria-select">
+                    <option value="">Todas as Categorias</option>
+                    <option value="eletricista">Eletricista</option>
+                    <option value="encanador">Encanador</option>
+                    <option value="pedreiro">Pedreiro</option>
+                    <option value="pintor">Pintor</option>
+                </select>
+                <input type="text" id="busca" placeholder="O que você está procurando?" class="search-input">
+                <select class="regiao-select">
+                    <option value="">Todas as Regiões</option>
+                    <option value="zona-norte">Zona Norte</option>
+                    <option value="zona-sul">Zona Sul</option>
+                    <option value="zona-leste">Zona Leste</option>
+                    <option value="zona-oeste">Zona Oeste</option>
+                </select>
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                    Buscar
+                </button>
+            </div>
+        </section>
+
+        <section class="filtros-section">
+            <div class="filtros-container">
+                <div class="filtros-principais">
+                    <div class="filtro-grupo">
+                        <h4>Avaliação</h4>
+                        <div class="estrelas-filtro">
+                            <label>
+                                <input type="checkbox" value="5">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                (5 estrelas)
+                            </label>
+                            <label>
+                                <input type="checkbox" value="4">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                (4+ estrelas)
+                            </label>
+                        </div>
+                    </div>
+                    <div class="filtro-grupo">
+                        <h4>Preço</h4>
+                        <div class="range-slider">
+                            <input type="range" min="0" max="1000" value="500">
+                            <div class="range-values">Até R$ 500</div>
+                        </div>
+                    </div>
+                    <div class="filtro-grupo">
+                        <h4>Disponibilidade</h4>
+                        <div class="checkbox-grupo">
+                            <label>
+                                <input type="checkbox" value="disponivel-agora">
+                                Disponível Agora
+                            </label>
+                            <label>
+                                <input type="checkbox" value="atende-24h">
+                                Atende 24h
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="resultados-section">
+            <div class="resultados-info">
+                <p>Mostrando <strong>12</strong> prestadores de serviço</p>
+                <div class="ordenacao">
+                    <span>Ordenar por:</span>
+                    <select>
+                        <option value="relevancia">Relevância</option>
+                        <option value="avaliacao">Melhor Avaliação</option>
+                        <option value="preco-menor">Menor Preço</option>
+                        <option value="preco-maior">Maior Preço</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="lista-servicos" class="grid-servicos">
+                <!-- Cards de exemplo -->
+                <div class="prestador-card">
+                    <img src="assets/images/profile-default.jpg" alt="João Silva" class="prestador-foto">
+                    <div class="prestador-info">
+                        <h3>João Silva</h3>
+                        <div class="servico">Eletricista</div>
+                        <div class="avaliacao">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(4.5)</span>
+                        </div>
+                        <div class="experiencia">
+                            <i class="fas fa-briefcase"></i>
+                            10 anos de experiência
+                        </div>
+                        <div class="preco">
+                            <i class="fas fa-tag"></i>
+                            A partir de R$ 100
+                        </div>
+                        <div class="prestador-contato">
+                            <a href="https://wa.me/5511999999999" class="btn-whatsapp">
+                                <i class="fab fa-whatsapp"></i>
+                                WhatsApp
+                            </a>
+                            <a href="mailto:joao@email.com" class="btn-email">
+                                <i class="far fa-envelope"></i>
+                                E-mail
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Mais cards serão inseridos via JavaScript -->
+            </div>
+
+            <div class="paginacao">
+                <button class="btn-pagina anterior">
+                    <i class="fas fa-chevron-left"></i>
+                    Anterior
+                </button>
+                <div class="numeros-pagina">
+                    <button class="ativo">1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <span>...</span>
+                    <button>10</button>
+                </div>
+                <button class="btn-pagina proxima">
+                    Próxima
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Sobre Nós</h4>
+                <p>O SOS Serviços conecta você aos melhores profissionais da sua região, garantindo qualidade e confiança em cada serviço.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Links Úteis</h4>
+                <a href="#">Como Funciona</a>
+                <a href="#">Termos de Uso</a>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">FAQ</a>
+            </div>
+            <div class="footer-section">
+                <h4>Contato</h4>
+                <p>
+                    <i class="fas fa-phone"></i> (11) 9999-9999<br>
+                    <i class="fas fa-envelope"></i> contato@sosservicos.com.br<br>
+                    <i class="fas fa-map-marker-alt"></i> São Paulo, SP
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 SOS Serviços. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
